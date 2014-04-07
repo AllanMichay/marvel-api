@@ -5,6 +5,7 @@
 		private $feed;
 		private $loginUrl;
 		private $logoutUrl;
+		private $facebook;
 		
 		
 		public function init() {
@@ -16,13 +17,16 @@
 				try {
 					// Proceed knowing you have a logged in user who's authenticated.
 					$this->setProfile($facebook->api('/me'));
+					$this->setFeed($facebook->api('/me/feed'));
+					$this->setLogoutUrl($facebook->getLogoutUrl());
+					$this->setLoginUrl($facebook->getLoginUrl());
+					$this->setFacebook($facebook);
 				} catch (FacebookApiException $e) {
 					error_log($e);
 					$this->nullify();
 				}
 			}
-				$this->setLogoutUrl($facebook->getLogoutUrl());
-				$this->setLoginUrl($facebook->getLoginUrl());
+				
 		}
 		
 		public function nullify() {
@@ -31,6 +35,14 @@
 			$this->feed = null;
 			$this->loginUrl = null;
 			$this->logoutUrl = null;
+		}
+		
+		public function getFacebook() {
+			return $this->facebook;
+		}
+		
+		public function setFacebook($facebook) {
+			$this->facebook = $facebook;
 		}
 		
 		public function getId() {
@@ -73,9 +85,11 @@
 			$this->logoutUrl = $logoutUrl;
 		}
 		
-		public function postMessage($user, $link, $message) {
-			global $facebook;
-			if($user) {
+		public function postMessage($link, $message) {
+
+			$facebook = $this->getFacebook();
+						
+			if($this->getId()) {
 
 				// We have a user ID, so probably a logged in user.
 				// If not, we'll get an exception, which we handle below.
