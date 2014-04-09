@@ -1,7 +1,7 @@
 <?php
 	class MarvelConnect {
 		
-		public function getData($end_point = '', $params = array()) {
+		private function getData($end_point = '', $params = array()) {
 			require_once './src/includes/marvel-api-connect.php';
 			
 			// Set params

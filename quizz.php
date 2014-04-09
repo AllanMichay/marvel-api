@@ -1,15 +1,13 @@
 <?php
 	require_once 'src/includes/heading.php';
+	$pageName .= ' - Challenges';
+	$page = 'challenges';
+	include 'src/includes/head.php'; ?>
 ?>
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Quizz</title>
-	<link rel="stylesheet" href="src/css/main.css">
-</head>
 <body>
+	<?php include 'src/includes/header.php'; ?>
 	<?php
+		
 		$quizz = new Quizzes($user);
 	?>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
