@@ -4,7 +4,6 @@
 	require_once 'src/class/Vine.class.php';
 	require_once 'src/class/Marvel.class.php';
 	require_once 'src/class/FacebookUser.class.php';
-	require_once 'src/class/Quizzes.class.php';
 	require_once 'src/class/Slider.class.php';
 	require_once 'src/class/News.class.php';
 	require_once 'src/class/HeroWeek.class.php';

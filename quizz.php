@@ -2,16 +2,12 @@
 	require_once 'src/includes/heading.php';
 	$pageName .= ' - Challenges';
 	$page = 'challenges';
+	require_once 'src/class/Quizzes.class.php';
 	include 'src/includes/head.php'; ?>
-?>
 <body>
-	<?php include 'src/includes/header.php'; ?>
-	<?php
-		
+	<?php include 'src/includes/header.php'; 
 		$quizz = new Quizzes($user);
 	?>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="src/js/jquery-1.11.0.min.js"><\/script>')</script>
-	<script src="src/js/main.js"></script>
+	<?php include 'src/includes/foot-script.html' ?>
 </body>
 </html>

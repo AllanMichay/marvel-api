@@ -294,7 +294,7 @@ header{
 	height: 100%;
 	background-repeat: no-repeat;
 	background-position: 50%;
-	background-image: url("http://www.tvqc.com/wp-content/uploads/2012/05/hulk2-2.jpg");
+	background-color: #ffffff;
 	background-size: auto 100%;
 	visibility: visible;
 	-webkit-transform: rotate(-60deg);
@@ -678,6 +678,11 @@ footer .provided {
 	left: 280px;
 }
 
+.input-search {
+	float: right;
+	margin-right: 70px;
+}
+
 .search input{
 	width: 250px;
 	height: 40px;
@@ -698,9 +703,11 @@ footer .provided {
 }
 
 .result-browsed{
-	height: 700px;
-	background: url("../images/hero-bg.png");
-	border-bottom: 2px solid #3e0000;
+	height: 420px;
+	background: url("../images/browse-bg.jpg") center center no-repeat;
+	border-bottom: 5px solid #3e0000;
+	padding: 70px 0;
+	text-align: center;
 }
 
 .search{
