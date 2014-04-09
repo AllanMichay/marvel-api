@@ -1,3 +1,8 @@
+/*********
+**Fonts***
+********/
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
+
 li{
 	list-style: none;
 	display: inline-block;
@@ -7,7 +12,7 @@ li{
 body {
 	margin: 0;
 	padding: 0;
-	font-family: "Helvetica Neue", Arial, Helvetica;
+	font-family: 'Roboto', Arial, Helvetica;
 	font-weight: 300;
 	background-color: #000;
 }
@@ -109,14 +114,15 @@ header{
 	border-bottom: 4px solid #d40c0c;
 	text-align: center;
 	padding: 0;
+	font-weight: 500;
 	position: relative;
-	top: -15px;
+	top: -16px;
 }
 
 .nav li{
 	text-transform: uppercase;
 	vertical-align: middle;
-	padding-top: 18px;
+	padding-top: 15px;
 	padding-right: 25px;
 	padding-left: 25px;
 	height: 48px;
@@ -125,7 +131,6 @@ header{
 	   -moz-transform: skewX(-15deg);
 	-webkit-transform: skewX(-15deg);
 	position: relative;
-	top: -2px;
 }
 
 .nav li:hover{
@@ -297,15 +302,15 @@ header{
 	border-bottom: 2px solid #3e0000;
 }
 
-.hero-of-the-week .title div, .browse .title div{
+.hero-of-the-week .title div, .browse .title div, .browse_creators .title div{
 	background-color: #fff;
 }
 
-.hero-of-the-week .title div:before, .browse .title div:before{
+.hero-of-the-week .title div:before, .browse .title div:before, .browse_creators .title div:before{
 	border-color: transparent transparent transparent #fff;
 }
 
-.hero-of-the-week .title h1, .browse .title h1{
+.hero-of-the-week .title h1, .browse .title h1, .browse_creators .title h1{
 	color: #fff;
 }
 
@@ -329,26 +334,44 @@ footer ul {
 footer ul li{
 	text-align: center;
 	vertical-align: top;
-	margin-left: 5px;
-	margin-right: 5px;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 footer ul li h1{
 	text-transform: uppercase;
-	font-size: 20px;
-	color: #bcbcbc;
+	font-size: 14px;
+	color: #999999;
 }
 
 footer ul li p{
 	margin: 0;
 	color: #5f5f5f;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 18px;
+}
+
+footer ul li p:hover {
+	color: #888888;
 }
 
 footer ul li a{
 	text-decoration: none;
 }
 
+footer ul li a img {
+	height: 25px;
+	opacity: 0.3;
+}
+
+footer ul li a img:hover {
+	opacity: 1;
+}
+
 footer hr{
+	margin-top: 35px;
 	border: 0;
 	height: 1px;
 	width: 450px;
@@ -359,7 +382,27 @@ footer h1{
 	color: #3b3b3b;
 	text-transform: uppercase;
 	text-align: center;
-	font-size: 18px;
+	font-weight: 700;
+	font-size: 16px;
+}
+
+footer .img_footer_marvel {
+	margin: 0 auto;
+	width: 100%;
+}
+
+footer .img_footer_marvel img {
+	display: block;
+	margin: 0 auto;
+	opacity: 0.2;
+}
+
+footer .provided {
+	color: #333333;
+	font-weight: 400;
+	text-align: center;
+	margin-top: -5px;
+	font-size: 12px;
 }
 
 .character-informations{
@@ -642,6 +685,44 @@ footer h1{
 
 .search{
 	text-align: center;
+}
+
+/**********
+**Search creators**
+**********/
+
+.browse_creators{
+	height: 300px;
+	background-color: #9a0909;
+}
+
+.search_creators input {
+	border: none;
+	display: block;
+	margin: 0 auto;
+	padding: 10px;
+	width: 300px;
+	font-size: 16px;
+}
+
+.filter_creators {
+	text-align: center;
+	font-weight: 500;
+	font-size: 18px;
+}
+
+.filter_creators ul li {
+
+}
+
+.filter_alphabet {
+	text-align: center;
+	font-size: 24px;
+	margin-top: -30px;
+}
+
+.filter_alphabet ul li p{
+	margin-right: 20px; 
 }
 
 body{
