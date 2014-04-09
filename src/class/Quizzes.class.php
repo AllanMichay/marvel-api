@@ -10,7 +10,6 @@
 				$this->addContent($_GET['action']);
 			} else if (!empty($_GET) && !empty($_GET['answer'])){
 				require_once './src/class/Quizz.class.php';
-				
 				if(!empty($_GET['quizz'])) {
 					$quizz = new Quizz($_GET['quizz']);
 					if(!empty($_POST)) {

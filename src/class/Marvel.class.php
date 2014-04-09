@@ -23,7 +23,8 @@
 			return json_decode($content);
 		}
 		
-		public function extractFrom($content, $extract) {
+		public function extractFrom($end_point = '', $params = array(), $extract) {
+			$content = getData($end_point, $params);
 			switch($extract) {
 				case 'name':
 					return $content->data->results[0]->name;

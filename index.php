@@ -32,9 +32,9 @@
 <!--	<img src="<?php echo $image ?>" alt="<?php echo $name ?>">-->
 	<hr>
 	<?php
-//		$vine 		= new ComicsVineConnect();
-//		$content2 	= $vine->getData('characters',array('name'=>'Hulk','deck'=>'Hulk'));
-//		var_dump($content2);
+		$vine 		= new ComicsVineConnect();
+		$content2 	= $vine->getData('characters',array('name'=>'Hulk'));
+		//var_dump($content2);
 	?>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="src/js/jquery-1.11.0.min.js"><\/script>')</script>

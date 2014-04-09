@@ -13,11 +13,14 @@
 			
 			// Curl call
 			$curl = curl_init($url);
-			curl_setopt($curl,CURLOPT_FOLLOWLOCATION,1);
+			//curl_setopt($curl,CURLOPT_FOLLOWLOCATION,1);
 			curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
 			$content = curl_exec($curl);
 			curl_close($curl);
 
+			echo '<pre>';
+			echo $url;
+			echo '</pre>';
 			// Return curl result
 			return json_decode($content);
 		}

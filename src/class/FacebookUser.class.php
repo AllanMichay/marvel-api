@@ -24,7 +24,10 @@
 					error_log($e);
 					$this->nullify();
 				}
-			} 
+			} else {
+				$login_url = $facebook->getLoginUrl( array( 'scope' => 'publish_actions' ) );
+				echo 'Please <a href="' . $login_url . '">login.</a>';
+			}
 				
 		}
 		

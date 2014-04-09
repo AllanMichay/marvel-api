@@ -48,6 +48,7 @@
 			$db = new Db();
 			$pdo = $db->getPDO();
 			
+			
 			if($this->isFirstTime($_SESSION['id'])) {
 			
 				$nbQuestions = $this->getNbQuestions();
@@ -68,21 +69,20 @@
 				}
 				$percent = (int)(($this->getScore()/$nbQuestions)*100);
 				$this->setSuccess($percent);
-
+				
+				$this->checkEndForm($_SESSION['id']);
 				switch($mode) {
 					case 'solo' :
-						$this->checkEndForm($_SESSION['id']);
-						
 						break;
 					case 'waiting' :
-						$this->checkEndForm($_SESSION['id']);
-						
 						$this->checkWaiting($_SESSION['id']);
 						break;
 					case 'invite' :
-						$this->checkEndForm($_SESSION['id']);
-						
 						$this->sendInvitation($user, $_SESSION['id']);
+						break;
+					case 'invitation' :
+						if(!empty($_GET['duals']))
+							$this->answerDual($_SESSION['id'], $_GET['duals']);
 						break;
 				}
 			}
@@ -338,7 +338,7 @@
 			$db = new Db();
 			$pdo = $db->getPDO();
 			
-			$query = $pdo->prepare('INSERT INTO dual(idUser, idQuizz, score, category, difficulty) 
+			$query = $pdo->prepare('INSERT INTO duals(idUser, idQuizz, score, category, difficulty) 
 			VALUES (:idUser, :idQuizz, :score, :category, :difficulty)');
 			
 			$query->bindValue(':idUser', $id, PDO::PARAM_INT);
@@ -346,19 +346,44 @@
 			$query->bindValue(':score', $this->getSuccess(), PDO::PARAM_INT);
 			$query->bindValue(':category', $this->getCategory(), PDO::PARAM_INT);
 			$query->bindValue(':difficulty', $this->getDifficulty(), PDO::PARAM_INT);
-			
-			var_dump($id);
-			var_dump($this->getId());
-			var_dump($this->getSuccess());
-			var_dump($this->getCategory());
-			var_dump($this->getDifficulty());
-			
+
 			$result = $query->execute();
 			
-			var_dump($result);
 			if($result) {
-				var_dump($pdo->lastInsertId());
-				$user->postMessage('http://allanmichay.fr/preprod/marvel/quizz.php?answer=invitation&quizz='.$this->getId().'&dual='.$pdo->lastInsertId(), 'I have scored '.$this->getSuccess().' at this quizz. Challenge me if you dare !');
+				$user->postMessage('http://allanmichay.fr/preprod/marvel/quizz.php?answer=invitation&quizz='.$this->getId().'&duals='.$pdo->lastInsertId(), 'I have scored '.$this->getSuccess().' at this quizz. Challenge me if you dare !');
+			}
+		}
+		
+		private function answerDual($id, $idDual) {
+			require_once './src/class/Db.class.php';
+			$db = new Db();
+			$pdo = $db->getPDO();
+						
+			$query = $pdo->prepare('SELECT idUser, score FROM duals WHERE id = :id');
+			$query->bindValue(':id', $idDual);
+			$query->execute();
+			
+			$result = $query->fetch();
+			if($result->idUser != $id) {
+				if($result->score == $this->getSuccess()) {
+					$winner = 0;
+				} else if ($result->score > $this->getSuccess()) {
+					$winner = $result->idUser;
+				} else {
+					$winner = $id;
+				}
+
+				$query = $pdo->prepare('INSERT INTO versus(idUser1, idUser2, idQuizz, scoreUser1, scoreUser2, winner, difficulty, category, date) 
+													VALUES (:idUn, :idDeux, :idQuizz,:scoreUn, :scoreDeux, :winner, :difficulty, :category, NOW())');
+				$query->bindValue(':idUn',$result->idUser);
+				$query->bindValue(':idDeux',$id);
+				$query->bindValue(':idQuizz',$this->getId());
+				$query->bindValue(':scoreUn',$result->score);
+				$query->bindValue(':scoreDeux', $this->getSuccess());
+				$query->bindValue(':winner', $winner);
+				$query->bindValue(':difficulty',$this->getDifficulty());
+				$query->bindValue(':category',$this->getCategory());
+				$query->execute();
 			}
 		}
 	}
