@@ -5,7 +5,7 @@
 		public function __construct($page) {
 			switch($page) {
 				case 'characters' :
-					displaySliderHero();
+					$this->displaySliderHero();
 					break;
 				case 'character' :
 					break;
@@ -25,14 +25,13 @@
 				require_once './src/class/Marvel.class.php';
 				$marvel = new MarvelConnect();
 				$content = $marvel->getData('characters',array('name'=>$hero->heroName,'orderBy' => 'name', 'limit' => '1'));
-				$marvel->extractFrom($content, 'id')
 				echo '<li>
 					<img src="'.$hero->largeImage.'" alt="'.$hero->title.'"/>
 					<div class="slide-description">
 						<h3>'.$hero->title.'</h3>
 						<h4>'.$hero->heroName.'</h4>
 						<p>'.$hero->desc.'</p>
-						<a href="character.php?id='.$marvel->extractFrom($content, 'id').'" class="action"><span>'Read More'</span></a>
+						<a href="character.php?id='.$marvel->extractFrom($content, 'id').'" class="action"><span>Read More</span></a>
 					</div>
 				</li>';
 			}
