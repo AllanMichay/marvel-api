@@ -7,25 +7,24 @@
 		private $logoutUrl;
 		private $facebook;
 		
-		
 		public function init() {
 			require_once './src/includes/facebook-api-connect.php';
 			// Get User ID
+			$this->setFacebook($facebook);
 			$this->setId($facebook->getUser());
-
+			$this->setLogoutUrl($facebook->getLogoutUrl());
+			$this->setLoginUrl($facebook->getLoginUrl( array( 'scope' => 'publish_actions' ) ));
 			if ($this->getId()) {
 				try {
 					// Proceed knowing you have a logged in user who's authenticated.
 					$this->setProfile($facebook->api('/me'));
 					$this->setFeed($facebook->api('/me/feed'));
-					$this->setLogoutUrl($facebook->getLogoutUrl());
-					$this->setLoginUrl($facebook->getLoginUrl());
-					$this->setFacebook($facebook);
+					$this->userConnection();
 				} catch (FacebookApiException $e) {
 					error_log($e);
 					$this->nullify();
 				}
-			}
+			} 
 				
 		}
 		
@@ -86,9 +85,8 @@
 		}
 		
 		public function postMessage($link, $message) {
-
-			$facebook = $this->getFacebook();
-						
+			$facebook = $this->getFacebook();		
+			
 			if($this->getId()) {
 
 				// We have a user ID, so probably a logged in user.
@@ -99,10 +97,7 @@
 											  'link' => $link,
 											  'message' => $message
 										 ));
-					echo '<pre>Post ID: ' . $ret_obj['id'] . '</pre>';
-
-					// Give the user a logout link 
-					echo '<br /><a href="' . $facebook->getLogoutUrl() . '">logout</a>';
+				echo 'Message sent !';
 				} catch(FacebookApiException $e) {
 					// If the user is logged out, you can have a 
 					// user ID even though the access token is invalid.
@@ -112,8 +107,8 @@
 								   'scope' => 'publish_actions'
 								   )); 
 					echo 'Please <a href="' . $login_url . '">login.</a>';
-					error_log($e->getType());
-					error_log($e->getMessage());
+					print_r($e->getType());
+					print_r($e->getMessage());
 				}   
 			} else {
 
@@ -125,5 +120,39 @@
 				echo 'Please <a href="' . $login_url . '">login.</a>';
 
 			} 
+		}
+		
+		private function userConnection() {
+			require_once './src/class/Db.class.php';
+			$db = new Db();
+			$pdo = $db->getPDO();
+			
+			if(empty($_SESSION['id'])) {
+				$query = $pdo->prepare('SELECT id FROM users WHERE id_fb = :id');
+				$query->bindValue(':id',$this->getId());
+				$query->execute();
+				$result = $query->fetch();
+				if($result) {
+					$_SESSION['id'] = $result->id;
+				} else {
+					$this->userCreation();
+				}
+			}
+		}
+		
+		private function userCreation() {
+			require_once './src/class/Db.class.php';
+			$db = new Db();
+			$pdo = $db->getPDO();
+			
+			$query = $pdo->prepare('INSERT INTO users(idFb,activity,points) VALUES (:id, 50, 0)');
+			$query->bindValue(':id',$this->getId());
+			$query->execute();
+			
+			$query = $pdo->prepare('SELECT id FROM users WHERE idFb = :id');
+			$query->bindValue(':id',$this->getId());
+			$query->execute();
+			$result = $query->fetch();
+			$_SESSION['id'] = $result->id;
 		}
 	}

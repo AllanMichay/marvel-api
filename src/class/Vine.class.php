@@ -18,7 +18,6 @@
 			$content = curl_exec($curl);
 			curl_close($curl);
 
-			
 			// Return curl result
 			return json_decode($content);
 		}
