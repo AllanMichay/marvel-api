@@ -26,7 +26,7 @@
 				if($max-$i >= 3) {
 					echo '<div class="hex-row">';
 					for($j = 0; $j < 3; $j++) {
-						echo '<a href="character.php?id='.$marvel->extractFrom($content, 'id', $i).'"><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"><img width="170" src="'.$marvel->extractFrom($content, 'image',$i).'"/></div></div></div></a>';
+						echo '<a href="character.php?id='.$marvel->extractFrom($content, 'id', $i).'"><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"><img width="170" height="200" src="'.$marvel->extractFrom($content, 'image',$i).'"/><div class="hide">- '.$marvel->extractFrom($content, 'name',$i).' -</div></div></div></div></a>';
 						$i++;
 					}
 					echo '</div>';
@@ -34,7 +34,7 @@
 				if($max-$i >= 2) {
 					echo '<div class="hex-row even">';
 					for($j = 0; $j < 2; $j++) {
-						echo '<a href="character.php?id='.$marvel->extractFrom($content, 'id', $i).'"><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"><img width="170" src="'.$marvel->extractFrom($content, 'image',$i).'"/></div></div></div></a>';
+						echo '<a href="character.php?id='.$marvel->extractFrom($content, 'id', $i).'"><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"><img width="170" height="200" src="'.$marvel->extractFrom($content, 'image',$i).'"/><div class="hide">- '.$marvel->extractFrom($content, 'name',$i).' -</div></div></div></div></a>';
 						$i++;
 					}
 					echo '</div>';
@@ -42,7 +42,7 @@
 				if($max-$i >= 3) {
 					echo '<div class="hex-row">';
 					for($j = 0; $j < 3; $j++) {
-						echo '<a href="character.php?id='.$marvel->extractFrom($content, 'id', $i).'"><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"><img width="170" src="'.$marvel->extractFrom($content, 'image',$i).'"/></div></div></div></a>';
+						echo '<a href="character.php?id='.$marvel->extractFrom($content, 'id', $i).'"><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"><img width="170" height="200" src="'.$marvel->extractFrom($content, 'image',$i).'"/><div class="hide">- '.$marvel->extractFrom($content, 'name',$i).' -</div></div></div></div></a>';
 						$i++;
 					}
 					echo '</div>';

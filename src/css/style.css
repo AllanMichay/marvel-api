@@ -301,6 +301,7 @@ header{
 	   -moz-transform: rotate(-60deg);
 		 -o-transform: rotate(-60deg);
 			transform: rotate(-60deg);
+	position: relative;
 }
 
 .hexagon2 {
@@ -308,6 +309,28 @@ header{
 	height: 200px;
 	margin: -50px 0 0 7px;
 	display: inline-block;
+}
+
+.hide {
+	background: #770f00;
+	position: absolute;
+	text-align: center;
+	color: #ffffff;
+	font-size: 18px;
+	top: 0;
+	left: 0;
+	height: 20px;
+	padding: 90px 0;
+	width: 170px;
+	opacity: 0;
+	-webkit-transition: 0.5s all ease;
+	   -moz-transition: 0.5s all ease;
+		 -o-transition: 0.5s all ease;
+			transition: 0.5s all ease;
+}
+
+.hexagon-in2:hover .hide {
+	opacity: 1;
 }
 
 /**Hero of the week**/
