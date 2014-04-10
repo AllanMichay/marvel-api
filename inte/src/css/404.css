@@ -1,0 +1,30 @@
+/**404**/
+
+.no_result_found {
+	height: 350px;
+	background: url("../images/hero-bg.png");
+	border-bottom: 2px solid #3e0000;
+	color: #fff;
+}
+
+.no_result_found .title div{
+	background-color: #fff;
+}
+
+.no_result_found .title div:before{
+	border-color: transparent transparent transparent #fff;
+}
+
+.no_result_found .title h1{
+	color: #fff;
+}
+
+.no_result_found_text {
+	margin-left: 150px;
+	margin-right: 150px;
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 300;
+}
+
+
