@@ -2,37 +2,6 @@ $(document).ready(function(){
 
 //Header's slider
 
-	var isFirst = true;
-
-	$('.left').click(function(){
-		if(isFirst == true) {
-			$('.slider').css({
-				'background-image': 'url("http://www.nyan.cat/cats/original.gif")'
-			});
-			isFirst = false;
-		} else {
-			$('.slider').css({
-				'background-image': 'url("src/images/header-bg.png")'
-			});
-			isFirst = true;
-		}
-		
-	})
-
-	$('.right').click(function(){
-		if(isFirst == true) {
-			$('.slider').css({
-				'background-image': 'url("http://www.nyan.cat/cats/original.gif")'
-			});
-			isFirst = false;
-		} else {
-			$('.slider').css({
-				'background-image': 'url("src/images/header-bg.png")'
-			});
-			isFirst = true;
-		}
-		
-	})
 
 	//Toggle account
 
@@ -248,6 +217,38 @@ $(document).ready(function(){
 					left: -400
 				})
 			}
+	});
+
+	//Toggle quizz
+
+	var isToggleQ = false;
+	var isInsideQ = false;
+
+
+	$('.challenge-btt-start').click(function(){
+		console.log('ok');
+		if(isToggle == false) {
+			$('.quizz-wraper').stop().fadeIn(500);
+			$('.shadow').stop().fadeIn(500);
+			isToggle = true;
+		}
+	})
+
+	$('.goback').click(function(){
+		$('.quizz-wraper').stop().fadeOut(500);
+		$('.shadow').stop().fadeOut(500);
+		isToggle = false;
+	})
+	
+	$(document).mouseup(function (e)
+	{
+		var container = $('.quizz-wraper');
+		if (!container.is(e.target) && container.has(e.target).length === 0)
+		{
+			container.stop().fadeOut(500);
+			$('.shadow').stop().fadeOut(500);
+			isToggle = false;
+		}
 	});
 
 })
