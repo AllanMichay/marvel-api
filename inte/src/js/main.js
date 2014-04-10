@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 //Header's slider
 
-	isFirst = true;
+	var isFirst = true;
 
 	$('.left').click(function(){
 		if(isFirst == true) {

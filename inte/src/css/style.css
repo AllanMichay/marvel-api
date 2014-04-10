@@ -41,7 +41,7 @@ header{
 	position: absolute;
 	background: url("../images/marvel-logo.png") no-repeat;
 	width: 220px;
-	height: 100px;
+	height: 110px;
 	z-index: 10;
 	top: 20px;
 	left: 60px;
@@ -718,7 +718,6 @@ footer .provided {
 .filter_alphabet {
 	text-align: center;
 	font-size: 24px;
-	margin-top: -30px;
 }
 
 .filter_alphabet ul li p{
