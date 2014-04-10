@@ -21,12 +21,12 @@
 			   <a href="#"><li class="current"><div></div></li></a><!--
 			   --><a href="#"><li><p>Comics</p></li></a><!--span à mettre
 			   --><a href="#"><li><p>Characters</p></li></a><!--
-			   --><a href="#"><li><p>Creators</p></li></a><!--
 			   --><a href="#"><li><p>Movies</p></li></a><!--
 			   --><a href="#"><li><p>Challenges</p></li></a><!--
 			   --><a href="#"><li><div></div></li></a>
 		</ul>   
 	</header>
+	<div class="shadow"></div>
 	<section class="account-wraper">
 		<div class="head-account">
 			<div class="perso-picture">
@@ -49,22 +49,80 @@
 				<p>25/25</p>
 				<h3>Rank : </h3><span> first</span>
 			</div>
+			<ul class="nav-account">
+				<li id="noti"><div></div></li>
+				<li id="chal"><div></div></li>
+				<li id="succ"><div></div></li>
+				<li id="foll"><div></div></li>
+				<li id="info"><div>?</div></li>
+			</ul>
 		</div>
 		<div class="notifs">
 			<div class="title">
 				<div></div>
 				<h1>Notifications</h1>
 			</div>
-			<div class="notifs-wraper">
-				<ul>
-					<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>New comics</p><div class="delete"><a href=""><p>Delete</p></a></div></li>
-					<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>New comics</p><div class="delete"><a href=""><p>Delete</p></a></div></li>
-					<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>New comics</p><div class="delete"><a href=""><p>Delete</p></a></a></div></li>
-					<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>New comics</p><div class="delete"><a href=""><p>Delete</p></a></div></li>
-					<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>New comics</p><div class="delete"><a href=""><p>Delete</p></a></div></li>
-					<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>New comics</p><div class="delete"><a href=""><p>Delete</p></a></div></li>
-					<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>New comics</p><div class="delete"><a href=""><p>Delete</p></a></div></li>
-					<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>New comics</p><div class="delete"><a href=""><p>Delete</p></a></div></li>
+			<div class="wraper">
+				<div class="account-bot-wraper notifs-wraper">
+					<ul>
+						<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>New comics</p><div class="delete"><a href=""><p>Delete</p></a></div></li>
+						<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>New comics</p><div class="delete"><a href=""><p>Delete</p></a></div></li>
+						<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>New comics</p><div class="delete"><a href=""><p>Delete</p></a></div></li>
+						<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>New comics</p><div class="delete"><a href=""><p>Delete</p></a></div></li>
+						<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>New comics</p><div class="delete"><a href=""><p>Delete</p></a></div></li>
+						<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>New comics</p><div class="delete"><a href=""><p>Delete</p></a></div></li>
+						<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>New comics</p><div class="delete"><a href=""><p>Delete</p></a></div></li>
+						<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>New comics</p><div class="delete"><a href=""><p>Delete</p></a></div></li>
+					</ul>
+				</div>
+				<div class="account-bot-wraper challenges-wraper">
+					<canvas id="graph"></canvas>
+					<div class="stats-challenges">
+						<div class="faced"><p>Challenges faced</p><p>249</p></div>
+						<div class="faced"><p>Challenges succeeded</p><p>183</p></div>
+						<div class="faced"><p>Ratio points/challenge</p><p>3.41</p></div>
+					</div>
+				</div>
+				<div class="account-bot-wraper success-wraper">
+					<ul>
+						<li><div id="hulk"></div><p>Hulk</p></li>
+						<li><div id="thor"></div><p>Thor</p></li>
+						<li><div id="stan"></div><p>Stan Lee</p></li>
+						<li><div id="captain"></div><p>Captain America</p></li>
+						<li><div id="spider"></div><p>Spider Man</p></li>
+						<li><div id="nick"></div><p>ick Fury</p></li>
+						<li><div id="iron"></div><p>Iron Man</p></li>
+						<li><div id="devil"></div><p>Dardevil</p></li>
+						<li><div id="wolverine"></div><p>Wolverine</p></li>
+						<li><div id="shield"></div><p>The shield</p></li>
+					</ul>
+				</div>
+				<div class="account-bot-wraper follow-wraper">
+					<ul>
+						<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>Hulk</p><div class="delete"><a href=""><p>Unfollow</p></a></div></li>
+						<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>Hulk</p><div class="delete"><a href=""><p>Unfollow</p></a></div></li>
+						<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>Hulk</p><div class="delete"><a href=""><p>Unfollow</p></a></div></li>
+						<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>Hulk</p><div class="delete"><a href=""><p>Unfollow</p></a></div></li>
+						<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>Hulk</p><div class="delete"><a href=""><p>Unfollow</p></a></div></li>
+						<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>Hulk</p><div class="delete"><a href=""><p>Unfollow</p></a></div></li>
+						<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>Hulk</p><div class="delete"><a href=""><p>Unfollow</p></a></div></li>
+						<li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div><p>Hulk</p><div class="delete"><a href=""><p>Unfollow</p></a></div></li>
+					</ul>
+				</div>
+				<div class="account-bot-wraper infos-wraper">
+					<div class="wraper-info">
+						<div></div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, voluptate, aspernatur, quas tempora consequatur quasi in molestias est nesciunt</p>
+					</div>
+					<div class="wraper-info">
+						<div></div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, voluptate, aspernatur, quas tempora consequatur quasi in molestias est nesciunt</p>
+					</div>
+					<div class="wraper-info">
+						<div></div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, voluptate, aspernatur, quas tempora consequatur quasi in molestias est nesciunt</p>
+					</div>
+					<div class="wraper-info">
+						<div></div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, voluptate, aspernatur, quas tempora consequatur quasi in molestias est nesciunt</p>
+					</div>
+				</div>
 			</div>
 		</div>	
 
@@ -79,9 +137,7 @@
 			<ul class="nav">
 			   <a href="#"><li class="current"><p>All</p></li></a><!--
 			   --><a href="#"><li><p>Comics</p></li></a><!--
-			   --><a href="#"><li><p>Characters</p></li></a><!--
-			   --><a href="#"><li><p>Movies</p></li></a><!--
-			   --><a href="#"><li><p>Events</p></li></a>
+			   --><a href="#"><li><p>Characters</p></li></a>
 			</ul>
 
 			<div class="prez-news">
@@ -99,17 +155,32 @@
 		</section>
 
 		<section class="hero-of-the-week">
+		<div class="pattern"></div>
 			<div class="title">
 				<div></div>
 				<h1>Hero Of The Week</h1>
 			</div>
 
-			<div class="prez-news">
+			<div class="prez-news prez">
 				<div class="hex-row">
-					<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div>
-					<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div>
-					<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div>
+					<div class="slider-hero">
+						<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div>
+						<div class="hexagon hexamid hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div>
+						<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div>
+					</div>
 				</div>
+				<div class="roundedOne">
+					<input type="radio" value="1" id="roundedOne" name="check"/>
+				</div>
+				<div class="roundedOne">
+					<input type="radio" value="2" id="roundedOne" name="check" checked/>
+				</div>
+				<div class="roundedOne">
+					<input type="radio" value="3" id="roundedOne" name="check" />
+				</div>
+				<div class="hero-name">Spiderman</div>
+				<div class="desc-hero">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem veniam iste voluptates molestias voluptatum? Commodi, explicabo, repudiandae veritatis odio itaque provident quae atque cumque fugiat dolore est architecto quis vel.</div>
+				<div class="read-more"><div>Read more</div></div>
 			</div>
 		</section>
 	 </div>
@@ -162,6 +233,7 @@
 		<hr>
 	</footer>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+	 <script src="src/js/chart.min.js"></script>
  	<script src="src/js/main.js"></script>
 	</body>
 </html>

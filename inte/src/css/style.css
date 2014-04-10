@@ -21,7 +21,7 @@ body {
 **Home***
 ********/
 header{
-	height: 540px;
+	height: 533px;
 	width: 960px;
 	margin: 0 auto;
 }
@@ -300,6 +300,14 @@ header{
 	color: #000;
 	padding-left: 10px;
 	padding-right: 10px;
+}
+
+.news .nav a li:hover p {
+	color: #fff;
+}
+
+.news .nav .current p{
+	color: #fff;
 }
 
 .prez-news{
@@ -809,17 +817,31 @@ body{
 	width: 700px;
 	height: 700px;
 	margin: 0 auto;
-	position: absolute;
 	background-color: #000;
 	top: 150px;
 	left: 50%;
 	margin-left: -350px;
 	z-index: 100;
+	display: none;
+	position: fixed;
+	z-index: 1000;
+}
+
+.shadow{
+	background-color: rgba(1,1,1,.7);
+	position: fixed;
+	bottom: 0;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 300;
+	display: none;
 }
 
 .head-account{
 	width: 100%;
 	height: 300px;
+	position: relative;
 	background: url('../images/bg-account.png') no-repeat;
 	-webkit-background-size: cover;
 	background-size: cover;
@@ -904,10 +926,6 @@ body{
 .notifs{
 	background-color: #fff;
 	height: 400px;
-	box-shadow: inset 1px 2px 20px #000;
-	-webkit-box-shadow: inset 1px 2px 20px #000;
-	   -moz-box-shadow: inset 1px 2px 20px #000;
-		 -o-box-shadow: inset 1px 2px 20px #000;
 }
 
 .notifs h1{
@@ -928,19 +946,21 @@ body{
 	margin-top: 45px;
 }
 
-.notifs-wraper{
+.account-bot-wraper{
 	width: 600px;
 	height: 300px;
 	overflow: auto;
 	margin: 0 auto;
+	position: absolute;
+	margin-left: 25px;
 }
 
-.notifs-wraper ul li .hexagon{
+.account-bot-wraper ul li .hexagon{
 	width: 115px;
 	margin-top: -30px;
 }
 
-.notifs-wraper ul li p{
+.account-bot-wraper ul li p{
 	color: #000;
 	text-align: center;
 	margin: 0;
@@ -949,7 +969,7 @@ body{
 	top: -30px;
 }
 
-.notifs-wraper ul li .delete{
+.account-bot-wraper ul li .delete{
 	transform: skewX(-15deg);
 		 -o-transform: skewX(-15deg);
 	   -moz-transform: skewX(-15deg);
@@ -961,7 +981,7 @@ body{
 	padding: 5px;
 }
 
-.notifs-wraper ul li .delete p{
+.account-bot-wraper ul li .delete p{
 	transform: skewX(15deg);
 		 -o-transform: skewX(15deg);
 	   -moz-transform: skewX(15deg);
@@ -974,9 +994,309 @@ body{
 	top: 0px;
 }
 
-.notifs-wraper ul li a{
+.account-bot-wraper ul li a{
 	text-decoration: none;
 }
+
+.challenges-wraper{
+	left: 700px;
+	text-align: center;
+}
+
+.success-wraper{
+	left: 1400px;
+}
+
+.success-wraper ul{
+	margin-left: 40px;
+}
+
+.success-wraper ul li{
+	margin-top: 10px;
+}
+
+.follow-wraper{
+	left: 2100px;
+}
+
+.infos-wraper{
+	left: 2800px;
+}
+
+.wraper{
+	width: 660px;
+	height: 320px;
+	overflow: auto;
+	overflow-x: hidden; 
+	margin-left: 20px;
+	top: -10px;
+	position: relative;
+}
+
+#graph{
+	margin-top: 75px;
+}
+
+.stats-challenges{
+	display: inline-block;
+	vertical-align: bottom;
+	margin-left: 10px;
+	position: relative;
+	top: 40px;
+}
+
+.stats-challenges div p{
+	margin: 0;
+	padding: 0;
+}
+
+.faced p:first-child{
+	font-size: 18px;
+}
+
+.faced p:last-child{
+	font-size: 36px;
+	font-weight: bold;
+}
+
+.nav-account{
+	height: 50px;
+	position: absolute;
+	bottom: -16px;
+	right: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.nav-account li{
+	background-color: #fff;
+	float: left;
+	width: 65px;
+	height: 50px;
+	margin: 0;
+	padding: 0;
+	color: black;
+	text-align: center;
+	transform: skewX(-15deg);
+		 -o-transform: skewX(-15deg);
+	   -moz-transform: skewX(-15deg);
+	-webkit-transform: skewX(-15deg);
+}
+
+.nav-account li div{
+	-webkit-background-size: 50% 50%;
+	background-size: 50% 50%;
+	background-position: 50% 50%;
+	background-color: transparent;
+	width: 100%;
+	height: 100%;
+}
+
+.nav-account li:first-child{
+	margin-left: 7px;
+}
+
+.nav-account li:last-child{
+	margin-right: -7px;
+}
+
+.nav-account li:hover{
+	background-color: red;
+}
+
+.success-wraper ul li p{
+	color: #000;
+	top: 0;
+}
+
+.success-wraper ul li div{
+	width: 150px;
+	height: 80px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+.wraper-info{
+	margin-top: 10px;
+}
+
+.wraper-info div{
+	width: 50px;
+	height: 50px;
+	display: inline-block;
+	background-color: red;
+	vertical-align: top;
+}
+
+.wraper-info:first-child div{
+	background: url("../images/thunder_info.png") no-repeat;
+	background-position: 50% 50%;
+}
+
+.wraper-info:nth-child(2) div{
+	background: url("../images/badge_m_info.png") no-repeat;
+	background-position: 50% 50%;
+}
+
+.wraper-info:nth-child(3) div{
+	background: url("../images/trophy_info.png") no-repeat;
+	background-position: 50% 50%;
+}
+
+.wraper-info:last-child div{
+	width: 120px;
+	background: url("../images/challenge_info.png") no-repeat;
+	background-position: 50% 50%;
+}
+
+.wraper-info p{
+	display: inline-block;
+	padding: 0;
+	margin: 5px;
+	width: 500px;
+}
+
+.wraper-info:last-child p{
+	width: 420px;
+}
+
+.wraper-info:first-child{
+	margin-top: 30px;
+}
+
+#hulk{
+	background-image: url("../images/badges/hulk.png");
+}
+
+#thor{
+	background-image: url("../images/badges/thor.png");
+}
+
+#stan{
+	background-image: url("../images/badges/stan.png");
+}
+
+#captain{
+	background-image: url("../images/badges/captain.png");
+}
+
+#spider{
+	background-image: url("../images/badges/spider.png");
+}
+
+#nick{
+	background-image: url("../images/badges/nick.png");
+}
+
+#iron{
+	background-image: url("../images/badges/iron.png");
+}
+
+#devil{
+	background-image: url("../images/badges/devil.png");
+}
+
+#wolverine{
+	background-image: url("../images/badges/wolverine.png");
+}
+
+#shield{
+	background-image: url("../images/badges/shield.png");
+}
+
+#foll div{
+	background: url('../images/follow_account.png') no-repeat;
+	-webkit-background-size: 40% 40%;
+	background-size: 40% 40%;
+	background-position: 50% 50%;
+	background-color: transparent;
+	width: 100%;
+	height: 100%;
+	transform: skewX(15deg);
+		 -o-transform: skewX(15deg);
+	   -moz-transform: skewX(15deg);
+	-webkit-transform: skewX(15deg);
+}
+
+#foll div:hover{
+	background-image: url("../images/follow_white.png");
+}
+
+#noti div{
+	background: url('../images/calendar_account_black.png') no-repeat;
+	-webkit-background-size: 30% 40%;
+	background-size: 30% 40%;
+	background-position: 50% 50%;
+	background-color: transparent;
+	width: 100%;
+	height: 100%;
+	transform: skewX(15deg);
+		 -o-transform: skewX(15deg);
+	   -moz-transform: skewX(15deg);
+	-webkit-transform: skewX(15deg);
+}
+
+#noti div:hover {
+	background-image: url("../images/calendar_account.png");
+}
+
+#chal div{
+	background: url('../images/trophy_info.png') no-repeat;
+	-webkit-background-size: 40% 40%;
+	background-size: 40% 40%;
+	background-position: 50% 50%;
+	background-color: transparent;
+	width: 100%;
+	height: 100%;
+	transform: skewX(15deg);
+		 -o-transform: skewX(15deg);
+	   -moz-transform: skewX(15deg);
+	-webkit-transform: skewX(15deg);
+}
+
+#chal div:hover{
+	background-image: url("../images/trophy_white.png");
+}
+
+#succ div{
+	background: url('../images/badge_m_info.png') no-repeat;
+	-webkit-background-size: 40% 40%;
+	background-size: 40% 40%;
+	background-position: 50% 50%;
+	background-color: transparent;
+	width: 100%;
+	height: 100%;
+	transform: skewX(15deg);
+		 -o-transform: skewX(15deg);
+	   -moz-transform: skewX(15deg);
+	-webkit-transform: skewX(15deg);
+}
+
+#succ div:hover{
+	background-image: url('../images/badge_M_white.png');
+}
+
+#info div{
+	color: #000;
+	width: 100%;
+	height: 100%;
+	transform: skewX(15deg);
+		 -o-transform: skewX(15deg);
+	   -moz-transform: skewX(15deg);
+	-webkit-transform: skewX(15deg);
+	font-size: 28px;
+	margin-top: 10px;
+	font-family: sans-serif;
+}
+
+#info div:hover{
+	color: #fff;
+}
+
+.wraper-info{
+	margin-left: 30px;
+}
+
 
 /*********
 **Search creators***
@@ -1063,4 +1383,117 @@ body{
 
 .recommended {
 	height: 300px;
+}
+
+/**404**/
+
+.no_result_found {
+	height: 350px;
+	background: url("../images/hero-bg.png");
+	border-bottom: 2px solid #3e0000;
+	color: #fff;
+}
+
+.no_result_found .title div{
+	background-color: #fff;
+}
+
+.no_result_found .title div:before{
+	border-color: transparent transparent transparent #fff;
+}
+
+.no_result_found .title h1{
+	color: #fff;
+}
+
+.no_result_found_text {
+	margin-left: 150px;
+	margin-right: 150px;
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 300;
+}
+
+/****Slider hero*****/
+
+.slider-hero{
+	position: relative;
+	width: 300px;
+	height: 300px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.slider-hero .hexagon{
+	position: absolute;
+	top: 100px;
+}
+
+.slider-hero .hexagon:first-child{
+	left: -400px;
+}
+
+.hexamid{
+	left: 65px;
+}
+
+.slider-hero .hexagon:last-child{
+	left: 400px;
+}
+
+.roundedOne{
+	display: inline-block;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+input[type=radio]{
+	outline: none;
+}
+
+.hero-name{
+	font-size: 30px;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 700;
+	margin-top: 10px;
+}
+
+.desc-hero{
+	font-size: 16px;
+	color: #fff;
+	width: 600px;
+	margin: 0 auto;
+	margin-top: 10px;
+	line-height: 24px;
+}
+
+.read-more{
+	width: 150px;
+	height: 40px;
+	background-color: #fff;
+	transform: skewX(-15deg);
+		 -o-transform: skewX(-15deg);
+	   -moz-transform: skewX(-15deg);
+	-webkit-transform: skewX(-15deg);
+	float: right;
+	margin-right: 200px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.read-more div{
+	color: #000;
+	transform: skewX(15deg);
+		 -o-transform: skewX(15deg);
+	   -moz-transform: skewX(15deg);
+	-webkit-transform: skewX(15deg);
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 18px;
+	margin-top: 8px;
+}
+
+.prez{
+	margin-top: 0;
 }
