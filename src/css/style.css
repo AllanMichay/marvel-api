@@ -1,8 +1,6 @@
 /*********
 **Fonts***
 ********/
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
-
 li{
 	list-style: none;
 	display: inline-block;
@@ -41,7 +39,7 @@ header{
 	position: absolute;
 	background: url("../images/marvel-logo.png") no-repeat;
 	width: 220px;
-	height: 110px;
+	height: 100px;
 	z-index: 10;
 	top: 20px;
 	left: 60px;
@@ -52,7 +50,7 @@ header{
 	width: 150px;
 	height: 40px;
 	top: 70px;
-	right: 60px;
+	right: 80px;
 	text-transform: uppercase;
 	color: #fff;
 	background-color: #f0141e;
@@ -61,10 +59,8 @@ header{
 		 -o-transform: skewX(-15deg);
 	   -moz-transform: skewX(-15deg);
 	-webkit-transform: skewX(-15deg);
-	font-size: 16px;
-	padding-top: 5px;
-	font-weight: 400;
-
+	font-size: 18px;
+	z-index: 15;
 }
 
 .account p {
@@ -76,7 +72,7 @@ header{
 	bottom: 10px;
 }
 
-.left{
+.left, .rslides_nav.rslides1_nav.prev {
 	position: absolute;
 	background: url("../images/left-arrow.jpg");
 	-webkit-background-size: cover;
@@ -86,9 +82,25 @@ header{
 	height: 125px;
 	top: 177.5px;
 	cursor: pointer;
+	font-size: 0;
 }
 
-.right{
+.logout {
+	position: absolute;
+	font-size: 0;
+	transform: skewX(-15deg);
+		 -o-transform: skewX(-15deg);
+	   -moz-transform: skewX(-15deg);
+	-webkit-transform: skewX(-15deg);
+	background-color: #ffffff;
+	width: 40px;
+	height: 40px;
+	top: 70px;
+	right: 40px;
+	z-index: 15;
+}
+
+.right, .rslides_nav.rslides1_nav.next {
 	position: absolute;
 	background: url("../images/left-arrow.jpg");
 	-webkit-background-size: cover;
@@ -103,6 +115,7 @@ header{
 	   -moz-transform: rotate(180deg);
 	-webkit-transform: rotate(180deg);
 	cursor: pointer;
+	font-size: 0;
 }
 
 /**Nav**/
@@ -112,7 +125,7 @@ header{
 }
 
 .nav{
-	height: 50px;
+	height: 60px;
 	background-color: #000;
 	border-bottom: 4px solid #d40c0c;
 	text-align: center;
@@ -128,7 +141,7 @@ header{
 	padding-top: 15px;
 	padding-right: 25px;
 	padding-left: 25px;
-	height: 38px;
+	height: 48px;
 	transform: skewX(-15deg);
 		 -o-transform: skewX(-15deg);
 	   -moz-transform: skewX(-15deg);
@@ -146,7 +159,6 @@ header{
 	   -moz-transform: skewX(15deg);
 	-webkit-transform: skewX(15deg);
 	display: inline-block;
-	font-weight: 400;
 	margin: 0;
 }
 
@@ -154,8 +166,8 @@ header{
 	background: url("../images/home.png") no-repeat;
 	-webkit-background-size: cover;
 	background-size: cover;
-	width: 25px;
-	height: 20px;
+	width: 30px;
+	height: 25px;
 	transform: skewX(15deg);
 		 -o-transform: skewX(15deg);
 	   -moz-transform: skewX(15deg);
@@ -166,72 +178,12 @@ header{
 	background: url("../images/user.png") no-repeat;
 	-webkit-background-size: cover;
 	background-size: cover;
-	width: 22px;
-	height: 20px;
+	width: 28px;
+	height: 25px;
 	transform: skewX(15deg);
 		 -o-transform: skewX(15deg);
 	   -moz-transform: skewX(15deg);
 	-webkit-transform: skewX(15deg);
-}
-
-.title div{
-	display: inline-block;
-	width: 140px;
-	height: 25px;
-	background-color: #000;
-	top: 30px;
-	position: relative;
-}
-
-.title div:before{
-	content:"";
-	position:absolute;
-	top:0;
-	left:140px;
-	width: 0; 
-	height: 0;
-	border-style: solid;
-	border-width: 0px 0px 25px 15px;
-	border-color: transparent transparent transparent #000;
-}
-
-.title h1 {
-	margin-top: 19px;
-	font-size: 24px;
-	font-weight: 500;
-}
-
-.title_white div{
-	display: inline-block;
-	width: 140px;
-	height: 25px;
-	background-color: #fff;
-	top: 30px;
-	position: relative;
-}
-
-.title_white div:before{
-	content:"";
-	position:absolute;
-	top:0;
-	left:140px;
-	width: 0; 
-	height: 0;
-	border-style: solid;
-	border-width: 0px 0px 25px 15px;
-	border-color: transparent transparent transparent #fff;
-}
-
-
-.title_white h1{
-	display: inline-block;
-	text-transform: uppercase;
-	vertical-align: text-top;
-	margin-left: 20px;
-	margin-top: 19px;
-	font-size: 24px;
-	font-weight: 400;
-	color: #fff;
 }
 
 /*******
@@ -342,20 +294,43 @@ header{
 	height: 100%;
 	background-repeat: no-repeat;
 	background-position: 50%;
-	background-image: url("http://www.tvqc.com/wp-content/uploads/2012/05/hulk2-2.jpg");
+	background-color: #ffffff;
 	background-size: auto 100%;
 	visibility: visible;
 	-webkit-transform: rotate(-60deg);
 	   -moz-transform: rotate(-60deg);
 		 -o-transform: rotate(-60deg);
 			transform: rotate(-60deg);
+	position: relative;
 }
 
 .hexagon2 {
 	width: 170px;
 	height: 200px;
-	margin: -50px 0 0 3px;
+	margin: -50px 0 0 7px;
 	display: inline-block;
+}
+
+.hide {
+	background: #770f00;
+	position: absolute;
+	text-align: center;
+	color: #ffffff;
+	font-size: 18px;
+	top: 0;
+	left: 0;
+	height: 20px;
+	padding: 90px 0;
+	width: 170px;
+	opacity: 0;
+	-webkit-transition: 0.5s all ease;
+	   -moz-transition: 0.5s all ease;
+		 -o-transition: 0.5s all ease;
+			transition: 0.5s all ease;
+}
+
+.hexagon-in2:hover .hide {
+	opacity: 1;
 }
 
 /**Hero of the week**/
@@ -383,18 +358,10 @@ header{
 *********/
 
 footer{
-	height: 280px;
+	height: 400px;
 	width: 960px;
 	margin: 0 auto;
 	background-color: #000;
-}
-
-footer hr{
-	margin-top: 25px;
-	border: 0;
-	height: 1px;
-	width: 450px;
-	background: #333;
 }
 
 footer ul {
@@ -442,23 +409,25 @@ footer ul li a img:hover {
 	opacity: 1;
 }
 
+footer hr{
+	margin-top: 35px;
+	border: 0;
+	height: 1px;
+	width: 450px;
+	background: #333;
+}
+
 footer h1{
 	color: #3b3b3b;
 	text-transform: uppercase;
 	text-align: center;
 	font-weight: 700;
 	font-size: 16px;
-	margin-top: 20px;
-}
-
-footer .footer_follow {
-	padding-top: -10px;
 }
 
 footer .img_footer_marvel {
 	margin: 0 auto;
 	width: 100%;
-	margin-top: 10px;
 }
 
 footer .img_footer_marvel img {
@@ -471,7 +440,7 @@ footer .provided {
 	color: #333333;
 	font-weight: 400;
 	text-align: center;
-	margin-top: 15px;
+	margin-top: -5px;
 	font-size: 12px;
 }
 
@@ -728,14 +697,23 @@ footer .provided {
 	-o-transform: rotate(180deg);
 }
 
+.search div.input-search:after {
+	left: 280px;
+}
+
+.input-search {
+	float: right;
+	margin-right: 70px;
+}
+
 .search input{
 	width: 250px;
 	height: 40px;
 	-webkit-transform: skewX(-28deg);
-	margin-left: 100px;
-	padding-left: 10px;
+	margin-left: 20px;
+	padding: 0 0 0 10px;
 	position: relative;
-	top: -1px;
+	border: none;
 }
 
 .search input{
@@ -748,9 +726,11 @@ footer .provided {
 }
 
 .result-browsed{
-	height: 660px;
-	background: url("../images/bg_blue.jpg");
-	border-bottom: 4px solid #3e0000;
+	height: 420px;
+	background: url("../images/browse-bg.jpg") center center no-repeat;
+	border-bottom: 5px solid #3e0000;
+	padding: 70px 0;
+	text-align: center;
 }
 
 .search{
@@ -788,6 +768,7 @@ footer .provided {
 .filter_alphabet {
 	text-align: center;
 	font-size: 24px;
+	margin-top: -30px;
 }
 
 .filter_alphabet ul li p{
@@ -978,89 +959,92 @@ body{
 	text-decoration: none;
 }
 
-/*********
-**Search creators***
-********/
+/*! http://responsiveslides.com v1.54 by @viljamis */
 
-.browse_creators {
-	height: 200px;
-	margin-top: -6px;
-	background: #9a0909;
-}
-
-.filter_creators li p{
-	font-weight: 500;
-}
-
-.filter_creators li:nth-child(2) {
-	padding-left: 30px;
-}
-
-.filter_creators li:hover{
-	background: #fff;
-	color: #d40c0c;
-}
-
-.filter_alphabet li {
-	height: 50px;
-	width: 20px;
-	margin-top: -50px;
-}
-
-.filter_alphabet li p:hover {
-	background: #fff;
-	color: #d40c0c;
-}
-
-/*********
-**Comics Details***
-********/
-
-.comics_details {
-	height: 600px;
-	margin-top: -6px;
-	background: #fff;
-}
-
-.comic-picture {
-	margin-left: 155px;
-	margin-top: 25px;
-}
-
-.comic-informations{
-	margin-top: -300px;
-	margin-left: 400px;
-	position: absolute;
-	width: 500px;
-	display: inline-block;
-	vertical-align: middle;
-}
-
-.comic-informations div h2{
+.rslides {
+	position: relative;
+	list-style: none;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	padding: 0;
 	margin: 0;
-	display: inline-block;
+}
+
+.rslides li {
+	-webkit-backface-visibility: hidden;
+	position: absolute;
+	display: none;
+	width: 100%;
+	height: 480px;
+	left: 0;
+	top: 0;
+}
+
+.rslides li:first-child {
+	position: relative;
+	display: block;
+	float: left;
+}
+
+.rslides img {
+	display: block;
+	height: auto;
+	float: left;
+	width: 100%;
+	border: 0;
+}
+
+.slide-description {
+	position: absolute;
+	z-index: 10;
+	right: 100px;
+	bottom: 65px;
+	text-align: right;
+}
+
+.slide-description h3 {
+	font-weight: 400;
+	text-transform: uppercase;
+	font-size: 45px;
+	margin: 0 0 15px 0;
+}
+
+.slide-description h4 {
+	font-weight: 400;
+	text-transform: uppercase;
+	font-size: 30px;
+	margin: 0 0 35px 0;
+}
+
+.slide-description p {
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 27px;
+	margin: 0 0 35px 0;
+}
+
+.slide-description a {
+	color: #000000;
+	transform: skewX(-15deg);
+		 -o-transform: skewX(-15deg);
+	   -moz-transform: skewX(-15deg);
+	-webkit-transform: skewX(-15deg);
+	padding: 10px 20px;
+	background: #ffffff;
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	width: 30%;
+	float: right;
 	font-size: 18px;
 }
 
-.comic-informations div p{
-	margin: 0;
-	display: inline-block;
-}
-
-.comic-informations div{
-	text-align: left;
-}
-
-/*********
-**recommanded***
-********/
-.pattern {
-	top: 5px;
-	height: 10px;
-	width: 100%;
-	background: url('../images/pattern_white.gif') repeat;
-}
-
-.recommended {
-	height: 300px;
+.slide-description a span {
+	text-transform: uppercase;
+	transform: skewX(15deg);
+		 -o-transform: skewX(15deg);
+	   -moz-transform: skewX(15deg);
+	-webkit-transform: skewX(15deg);
+	display: block;
 }
