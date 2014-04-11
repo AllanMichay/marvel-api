@@ -5,6 +5,7 @@
 	include 'src/includes/head.php'; ?>
 <body>
 	<?php $page = 'characters'; include 'src/includes/header.php'; ?>
+	<?php include 'src/includes/account.php'; ?>
 	<div class="main">
 		<section class="browse">
             <div class="title">

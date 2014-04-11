@@ -342,9 +342,9 @@ header{
 /**Hero of the week**/
 
 .hero-of-the-week {
-	height: 700px;
 	background: url("../images/hero-bg.png");
 	border-bottom: 2px solid #3e0000;
+	padding-bottom: 50px;
 }
 
 .hero-of-the-week .title div, .browse .title div, .browse_creators .title div{

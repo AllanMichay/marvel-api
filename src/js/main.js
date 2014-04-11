@@ -204,7 +204,7 @@ $(function() {
 	}
 
 	$('#noti').click(function(){
-		scrollNotifs();
+		
 	})
 	$('#chal').click(function(){
 		scrollChallenges();
@@ -214,7 +214,7 @@ $(function() {
 		scrollSuccess();
 	})
 	$('#foll').click(function(){
-		scrollFollow();
+		scrollNotifs();
 	})
 	$('#info').click(function(){
 		scrollInfos();

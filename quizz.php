@@ -8,10 +8,11 @@
 	<?php
 		include 'src/includes/header.php'; 
 		if(!$user->getId()) {
-			$login_url = $facebook->getLoginUrl( array( 'scope' => 'publish_actions' ) );
+			$login_url = $user->getFacebook()->getLoginUrl( array( 'scope' => 'publish_actions' ) );
 			echo '<div class="shadow on"></div><div class="pop-up"><a href="'.$login_url.'"><div class="account"><p>Please Login</p></div></a></div>';
 		}
 	?>
+	<?php include 'src/includes/account.php'; ?>
 	<div class="main">
 		<section class="browse">
             <div class="title">

@@ -8,11 +8,14 @@
 	if(!empty($_GET) && !empty($_GET['action'])) {
 		if($_GET['action'] == 'share') {
 			$user->postMessage('http://allanmichay.fr/preprod/marvel/character.php?id='.$_GET['id'], 'I really like this dude, check this out !');
+		} else if($_GET['action'] == 'follow') {
+			$user->addFollow($_SESSION['id'], $_GET['id']);
 		}
 	}
 	include 'src/includes/head.php'; ?>
 <body>
 	<?php $page = 'character'; include 'src/includes/header.php'; ?>
+	<?php include 'src/includes/account.php'; ?>
 	<div class="main">
 		<section class="character">
 			<div class="title">

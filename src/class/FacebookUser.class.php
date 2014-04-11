@@ -270,4 +270,52 @@
 				$query->execute();
 			}
 		}
+		
+		/***************************************************************
+		*	Add the hero to the follow list.
+		*	parameters : user = id of the user in the db
+		*	id = id of the hero
+		***************************************************************/
+		
+		public function addFollow($user, $id) {
+			require_once './src/class/Db.class.php';
+			$db = new Db();
+			$pdo = $db->getPDO();
+			
+			$query = $pdo->prepare('SELECT id FROM followHero WHERE idUser = :id AND idHero = :idHero');
+			$query->bindValue(':id',$user);
+			$query->bindValue(':idHero',$id);
+			$query->execute();
+			$result = $query->fetch();
+			
+			if(!$result) {
+				$query = $pdo->prepare('INSERT INTO followHero(idUser, idHero, date) VALUES(:user, :id, NOW())');
+				$query->bindValue(':user',$user);
+				$query->bindValue(':id',$id);
+				$query->execute();
+			}
+		}
+		
+		/***************************************************************
+		*	Display the follow list of the user.
+		*	parameters : user = id of the user in the db
+		***************************************************************/
+		
+		public function displayFollow($user) {
+			require_once './src/class/Db.class.php';
+			$db = new Db();
+			$pdo = $db->getPDO();
+			
+			$query = $pdo->prepare('SELECT idHero FROM followHero WHERE idUser = :id');
+			$query->bindValue(':id',$user);
+			$query->execute();
+			while($result = $query->fetch()) {
+				require_once './src/class/Character.class.php';
+				$char = new Character($result->idHero);
+				echo '<a href="character.php?id='.$result->idHero.'"><li><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"><img src="'.$char->getImage().'" width="120" height="170"></div></div></div></a><div class="delete"><a href=""><p>Delete</p></a></div></li>';
+			}
+
+		}
+		
+		
 	}
