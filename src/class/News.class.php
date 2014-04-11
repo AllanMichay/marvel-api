@@ -2,6 +2,9 @@
 
 	class News {
 		
+		/***************************************************************
+		*	Display all the news on the index
+		***************************************************************/
 		public function displayNewsAll() {
 			require_once './src/class/Db.class.php';
 			$db = new Db();

@@ -1,5 +1,9 @@
 <?php
 	class Characters {
+		/***************************************************************
+		*	Filters the list of character
+		*	$name : string = value of the input. Use to filter
+		***************************************************************/
 		public function filter($name) {
 			require_once './src/class/Marvel.class.php';
 			$marvel = new MarvelConnect();
@@ -8,6 +12,9 @@
 			$this->display($content);
 		}
 		
+		/***************************************************************
+		*	Display the first alphabetical characters of the marvel api db
+		***************************************************************/
 		public function displayCharacters() {
 			require_once './src/class/Marvel.class.php';
 			$marvel = new MarvelConnect();
@@ -18,6 +25,11 @@
 			$this->display($content);
 		}
 		
+		
+		/***************************************************************
+		*	Put in the good div the informations and make it work in the
+		*	hexagonal version of the display.
+		***************************************************************/
 		private function display($content) {
 			require_once './src/class/Marvel.class.php';
 			$marvel = new MarvelConnect();

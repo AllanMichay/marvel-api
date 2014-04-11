@@ -6,7 +6,15 @@
 		private $loginUrl;
 		private $logoutUrl;
 		private $facebook;
+		private $energy;
+		private $fName;
+		private $lName;
+		private $picture;
 		
+		
+		/***************************************************************
+		*	Initialize the facebook user
+		***************************************************************/
 		public function init() {
 			require_once './src/includes/facebook-api-connect.php';
 			// Get User ID
@@ -19,18 +27,24 @@
 					// Proceed knowing you have a logged in user who's authenticated.
 					$this->setProfile($facebook->api('/me'));
 					$this->setFeed($facebook->api('/me/feed'));
+					$this->rechargeEnergy();
+					$this->countEnergy();
+					$temp = $this->getProfile();
+					$this->setFName($temp['first_name']);
+					$this->setLName($temp['last_name']);
+					$this->setPicture('http://graph.facebook.com/'.$this->getId().'/picture?type=large');
 					$this->userConnection();
 				} catch (FacebookApiException $e) {
 					error_log($e);
 					$this->nullify();
 				}
-			} else {
-				$login_url = $facebook->getLoginUrl( array( 'scope' => 'publish_actions' ) );
-				echo 'Please <a href="' . $login_url . '">login.</a>';
-			}
+			} 
 				
 		}
 		
+		/***************************************************************
+		*	Nullify the facebook user
+		***************************************************************/
 		public function nullify() {
 			$this->id = null;
 			$this->profile = null;
@@ -53,6 +67,30 @@
 		
 		public function setID($id) {
 			$this->id = $id;
+		}
+		
+		public function getFName() {
+			return $this->fName;
+		}
+		
+		public function setFName($name) {
+			$this->fName = $name;
+		}
+		
+		public function getLName() {
+			return $this->lName;
+		}
+		
+		public function setLName($name) {
+			$this->lName = $name;
+		}
+		
+		public function getPicture() {
+			return $this->picture;
+		}
+		
+		public function setPicture($picture) {
+			$this->picture = $picture;
 		}
 		
 		public function getProfile() {
@@ -87,6 +125,19 @@
 			$this->logoutUrl = $logoutUrl;
 		}
 		
+		public function getEnergy() {
+			return $this->energy;
+		}
+		
+		public function setEnergy($energy) {
+			$this->energy = $energy;
+		}
+		
+		
+		/***************************************************************
+		*	Post a message from the facebook user
+		*	Parameters : a link and the message
+		***************************************************************/
 		public function postMessage($link, $message) {
 			$facebook = $this->getFacebook();		
 			
@@ -100,7 +151,7 @@
 											  'link' => $link,
 											  'message' => $message
 										 ));
-				echo 'Message sent !';
+				echo '<div class="shadow on"></div><div class="pop-up"><div class="warning">Message sent !</div></div>';
 				} catch(FacebookApiException $e) {
 					// If the user is logged out, you can have a 
 					// user ID even though the access token is invalid.
@@ -120,35 +171,47 @@
 				// We'll use the current URL as the redirect_uri, so we don't
 				// need to specify it here.
 				$login_url = $facebook->getLoginUrl( array( 'scope' => 'publish_actions' ) );
-				echo 'Please <a href="' . $login_url . '">login.</a>';
+				echo '<div class="shadow on"></div><div class="pop-up"><a href="'.$login_url.'"><div class="account"><p>Please Login</p></div></a></div>';
 
 			} 
 		}
 		
+		
+		/***************************************************************
+		*	Create the connection between facebook and our database
+		***************************************************************/
 		private function userConnection() {
 			require_once './src/class/Db.class.php';
 			$db = new Db();
 			$pdo = $db->getPDO();
 			
 			if(empty($_SESSION['id'])) {
-				$query = $pdo->prepare('SELECT id FROM users WHERE id_fb = :id');
+				$query = $pdo->prepare('SELECT id FROM users WHERE idFb = :id');
 				$query->bindValue(':id',$this->getId());
 				$query->execute();
 				$result = $query->fetch();
 				if($result) {
 					$_SESSION['id'] = $result->id;
+					$query = $pdo->prepare('UPDATE users SET lastConnection = NOW() WHERE idFb = :id');
+					$query->bindValue(':id',$this->getId());
+					$query->execute();
+					
 				} else {
 					$this->userCreation();
 				}
 			}
 		}
 		
+		
+		/***************************************************************
+		*	Create a user
+		***************************************************************/
 		private function userCreation() {
 			require_once './src/class/Db.class.php';
 			$db = new Db();
 			$pdo = $db->getPDO();
 			
-			$query = $pdo->prepare('INSERT INTO users(idFb,activity,points) VALUES (:id, 50, 0)');
+			$query = $pdo->prepare('INSERT INTO users(idFb,activity,points, lastConnection) VALUES (:id, 15, 0, NOW())');
 			$query->bindValue(':id',$this->getId());
 			$query->execute();
 			
@@ -157,5 +220,54 @@
 			$query->execute();
 			$result = $query->fetch();
 			$_SESSION['id'] = $result->id;
+			$this->countEnergy();
+		}
+		
+		/***************************************************************
+		*	Count the Energy of the user
+		***************************************************************/
+		public function countEnergy() {
+			require_once './src/class/Db.class.php';
+			$db = new Db();
+			$pdo = $db->getPDO();
+			
+			$query = $pdo->prepare('SELECT activity FROM users WHERE idFb = :id');
+			$query->bindValue(':id',$this->getId());
+			$query->execute();
+			$result = $query->fetch();
+			
+			$this->setEnergy($result->activity);
+		}
+		
+		
+		/***************************************************************
+		*	Recharge the energy everyday.
+		***************************************************************/
+		public function rechargeEnergy() {
+			require_once './src/class/Db.class.php';
+			$db = new Db();
+			$pdo = $db->getPDO();
+			
+			$query = $pdo->prepare('SELECT lastConnection FROM users WHERE idFb = :id');
+			$query->bindValue(':id',$this->getId());
+			$query->execute();
+			$result = $query->fetch();
+			
+			$date = getdate();
+			$day = $date['mday'];
+			$month = $date['mon'];
+			$year = $date['year'];
+			if(strlen(strval($month)) == 1) {
+				$month = '0'.$month;
+			}
+			if(strlen(strval($day)) == 1) {
+				$day = '0'.$day;
+			}
+			$date = $year.'-'.$month.'-'.$day;
+			if($date != $result->lastConnection) {
+				$query = $pdo->prepare('UPDATE users SET activity = 15 WHERE idFb = :id');
+				$query->bindValue(':id',$this->getId());
+				$query->execute();
+			}
 		}
 	}

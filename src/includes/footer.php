@@ -32,16 +32,16 @@
 			<a href="#"><p>Versus</p></a>
 		</li>
 	</ul>
-
 	<hr>
-		<h1>Follow marvel</h1>
+		<h1 class="footer_follow">Follow marvel</h1>
 		<ul>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
+			<li><a href="https://www.facebook.com/Marvel"><img src="src/images/social/facebook.png"></a></li>
+			<li><a href="https://plus.google.com/+marvel/posts"><img src="src/images/social/googleplus.png"></a></li>
+			<li><a href="https://twitter.com/marvel"><img src="src/images/social/twitter.png"></a></li>
+			<li><a href="http://marvelentertainment.tumblr.com/"><img src="src/images/social/tumblr.png"></a></li>
+			<li><a href="https://www.youtube.com/user/MARVEL"><img src="src/images/social/pinterest.png"></a></li>
+			<li><a href="https://www.pinterest.com/marvelofficial/"><img src="src/images/social/youtube.png"></a></li>
 		</ul>
-	<hr>
+
+	<p class="provided">Data provided by Marvel. © 2014 Marvel</p>
 </footer>

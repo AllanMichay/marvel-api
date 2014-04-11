@@ -7,6 +7,7 @@
 	require_once 'src/class/Slider.class.php';
 	require_once 'src/class/News.class.php';
 	require_once 'src/class/HeroWeek.class.php';
+	require_once 'src/class/Results.class.php';
 	$user = new FacebookUser();
 	$user->init();
-	$pageName = 'My Marvel';
+	$pageName = 'Marvel Challenges';

@@ -8,7 +8,7 @@
 		private $image;
 		private $LargeImage;
 		
-		public function __construct($id, $name, $title, $desc, $image, $largeImage) {
+		public function init($id, $name, $title, $desc, $image, $largeImage) {
 			$this->setId($id);
 			$this->setHeroName($name);
 			$this->setTitle($title);
@@ -17,19 +17,28 @@
 			$this->setLargeImage($largeImage);
 		}
 		
+		/***************************************************************
+		*	Display the heroes of the week on the index page
+		***************************************************************/
 		public function displayHeroesIndex() {
 			require_once './src/class/Db.class.php';
+			require_once './src/class/Marvel.class.php';
 			$db = new Db();
 			$pdo = $db->getPDO();
+			$marvel = new MarvelConnect();
+			
 			
 			$query = $pdo->query('SELECT * FROM heroesWeek ORDER BY id DESC LIMIT 3');
 			$result = $query->fetchAll();
+			$n = count($result);
 			echo 	'<div class="prez-news">';
-				echo '<div class="hex-row">';
-				for($j = 0; $j < count($result); $j++) {
-					echo '<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2" id=hero-week-'.$result[$j]->id.'></div></div></div>';
-				}
-				echo '</div>';
+			echo 		'<div class="hex-row">';
+			for($j = 0; $j < $n; $j++) {
+				$content = $marvel->getData('characters',array('name'=>$result[$j]->heroName,'orderBy' => 'name', 'limit' => '8'));
+				$id = $marvel->extractFrom($content, 'id', 0);
+				echo '<a href="character.php?id='.$id.'"><div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2" id=hero-week-'.$result[$j]->id.'><div class="hide">- '.$result[$j]->heroName.' -</div></div></div></div></a>';
+			}
+			echo 		'</div>';
 			echo 	'</div>';
 		}
 		
