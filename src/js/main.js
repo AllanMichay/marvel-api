@@ -7,6 +7,7 @@ $(function() {
 	***********************************************************/
 	
 	var question = $('.individual-question');
+	var choices = $('.choices');
 	var left = $('.quizz-wraper .left');
 	var right = $('.quizz-wraper .right');
 	var nbQuestion = question.length;
@@ -26,6 +27,16 @@ $(function() {
 	});
 	
 	right.on('click', function() {
+		left.fadeIn();
+		$('#question'+i).slideUp();
+		i++;
+		$('#question'+i).css('margin-top', '0');
+		if(i === nbQuestion)
+			right.fadeOut();
+		questionIndicator.html(i+' / '+nbQuestion);
+	});
+	
+	choices.on('click', function() {
 		left.fadeIn();
 		$('#question'+i).slideUp();
 		i++;
