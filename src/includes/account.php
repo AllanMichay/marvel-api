@@ -1,4 +1,3 @@
-<?php
 <div class="shadow"></div>
 	<section class="account-wraper">
 		<div class="head-account">

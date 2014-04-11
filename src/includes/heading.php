@@ -11,3 +11,5 @@
 	$user = new FacebookUser();
 	$user->init();
 	$pageName = 'Marvel Challenges';
+	if($user->getId())
+			$results = new Results($user->getId());

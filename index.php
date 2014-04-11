@@ -3,8 +3,6 @@
 	include 'src/includes/head.php'; ?>
 <body>
 	<?php $page = 'index'; include 'src/includes/header.php'; 
-		if($user->getId())
-			$results = new Results($user->getId());
 	?>
 
 	<?php include 'src/includes/account.php'; ?>
