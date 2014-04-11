@@ -27,13 +27,13 @@
 					// Proceed knowing you have a logged in user who's authenticated.
 					$this->setProfile($facebook->api('/me'));
 					$this->setFeed($facebook->api('/me/feed'));
+					$this->userConnection();
 					$this->rechargeEnergy();
 					$this->countEnergy();
 					$temp = $this->getProfile();
 					$this->setFName($temp['first_name']);
 					$this->setLName($temp['last_name']);
 					$this->setPicture('http://graph.facebook.com/'.$this->getId().'/picture?type=large');
-					$this->userConnection();
 				} catch (FacebookApiException $e) {
 					error_log($e);
 					$this->nullify();
